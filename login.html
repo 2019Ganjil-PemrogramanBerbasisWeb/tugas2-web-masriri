@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+
 <html>
 <head>
   <title>Beranda Sistim Monitoring Online Tempat Pembuangan Sampah Surabaya</title>
@@ -25,10 +26,10 @@
   <section id="one" class="wrapper style1">
   <div class="login-page">
     <div class="form">
-      <form action="login.php" method="post" class="login-form">
-        <input type="text" name="username" placeholder="username"/>
-        <input type="password" name="password" placeholder="password"/>
-        <button>login</button>
+      <form action="login.php" method="POST" class="login-form" onSubmit="return validasi()">
+        <input type="text" name="name" placeholder="name"/>
+        <input type="password" name="password" placeholder="password" />
+        <input type="submit" value="login" class="tombol">
         <p class="message">Not registered? <a href="signup.html">Create an account</a></p>
         </form>
       </div>
@@ -36,4 +37,18 @@
   </section>
 
 </body>
+
+<script type="text/javascript">
+	function validasi() {
+		var name = document.getElementById("name").value;
+		var password = document.getElementById("password").value;
+		if (name != "" && password!="") {
+			return true;
+		}else{
+			alert('name dan Password harus di isi !');
+			return false;
+		}
+	}
+
+</script>
 </html>
