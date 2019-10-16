@@ -1,4 +1,4 @@
 <?php
-mysql_connect("localhost","root",""); //sesuaikan dengan password dan username mysql anda
-mysql_select_db("sampah_overview"); //nama database yang kita gunakan sampah_overview
+$con = mysqli_connect('localhost','root','','users'); //sesuaikan dengan password dan username mysql andam
+mysqli_select_db($con, 'users');
 ?>

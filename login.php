@@ -1,35 +1,27 @@
 <?php
+
+session_start();
 include 'koneksi.php';
 
 
-if(isset($_POST['login'])){
+if(isset($_POST['name']) and isset($_POST['password']) ) {
 
-    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
-    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+$name = $_POST['name'];
+$password = md5($_POST['password']);
 
-  // -- ganti users dengan nama database
-    $sql = "SELECT * FROM users WHERE username=:username";
-    $stmt = $db->prepare($sql);
+$login = mysqli_query($con, "SELECT * FROM `users` where name='$name' and password='$password'");
+$cek = mysqli_num_rows($login);
 
-    // bind parameter ke query
-    $params = array(
-        ":username" => $username,
-    );
 
-    $stmt->execute($params);
+if($cek > 0) {
 
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    // jika user terdaftar
-    if($user){
-        // verifikasi password
-        if(password_verify($password, $user["password"])){
-            // buat Session
-            session_start();
-            $_SESSION["user"] = $user;
-            // login sukses, alihkan ke halaman timeline
-            header("Location: index.html");
-        }
-    }
+	$_SESSION['name'] = $name;
+	$_SESSION['status'] = "login";
+	header("location:index.html");
+} else {
+	header("location:login.html");
 }
+
+}
+
 ?>
