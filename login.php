@@ -88,30 +88,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <head>
+
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
-        body {
-            font: 14px sans-serif;
-        }
-
         .wrapper {
             width: 350px;
-            padding: 20px;
+
         }
     </style>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+
 </head>
 
 <body>
+    <!-- Header -->
+			<header id="header" class="alt">
+				<h1><strong><a href="index.html">Dibuat</a></strong> oleh tim Masriri</h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Beranda</a></li>
+						<li><a href="generic.html">Peta</a></li>
+						<li><a href="login.php">Masuk</a></li>
+					</ul>
+				</nav>
+			</header>
+
+            <a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+            
+
     <center>
     <div class="wrapper">
         <h2>Login</h2>
-        <p>Please fill in your credentials to login.</p></br>
+        <p>Please fill in your credentials to login.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                 <label style="float: left;">Username</label>
@@ -130,6 +151,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
     </div>
     </center>
+
+    <!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="https://web.facebook.com/?_rdc=1&_rdr" class="icon fa-facebook"></a></li>
+						<li><a href="https://twitter.com" class="icon fa-twitter"></a></li>
+						<li><a href="https://www.instagram.com/accounts/login/?source=auth_switcher" class="icon fa-instagram"></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled</li>
+						<li>Design: <a>Tim</a></li>
+						<li>Images: <a>Unsplash</a></li>
+					</ul>
+				</div>
+            </footer>
+            
+
 </body>
 
 </html>
