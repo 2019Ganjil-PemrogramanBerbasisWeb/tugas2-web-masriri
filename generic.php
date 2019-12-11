@@ -93,6 +93,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 						method="post" enctype="multipart/form-data">
                 <div class="container">
 
+			
+			</button>
+
 					<header class="large">
 					<p>Pemasukan Data TPS Surabaya</p>
 					</header>
@@ -189,11 +192,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			</table>;								
 
 
+			<center><button type="button" class="btn btn-link"><a href="jexcel.php">
+					Excel Spreadsheet
+				</a>
+		   </center>
+
+
 			</section>
 
 			<section id="main" class="wrapper">
 				<div class="container">
 
+				
 					<header class="major special">
 						<h2>Tampilan Peta</h2>
 					 	<p>Tampilan Peta TPS Di Surabaya</p>
