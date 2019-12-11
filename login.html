@@ -1,54 +1,48 @@
+
 <!DOCTYPE html>
+<html lang="en">
 
+include `login.php`
 
-<html>
 <head>
-  <title>Beranda Sistim Monitoring Online Tempat Pembuangan Sampah Surabaya</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="assets/css/main.css" />
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <style type="text/css">
+        body {
+            font: 14px sans-serif;
+        }
+
+        .wrapper {
+            width: 350px;
+            padding: 20px;
+        }
+    </style>
 </head>
-<body class="landing">
 
-  <!-- Header -->
-    <header id="header">
-      <h1><strong><a href="index.html">Dibuat</a></strong> oleh tim Masriri</h1>
-      <nav id="nav">
-        <ul>
-          <li><a href="index.html">Beranda</a></li>
-          <li><a href="generic.html">Peta</a></li>
-          <li><a href="login.html">Masuk</a></li>
-        </ul>
-      </nav>
-    </header>
-
-
-  <section id="one" class="wrapper style1">
-  <div class="login-page">
-    <div class="form">
-      <form action="login.php" method="POST" class="login-form" onSubmit="return validasi()">
-        <input type="text" name="name" placeholder="name"/>
-        <input type="password" name="password" placeholder="password" />
-        <input type="submit" value="login" class="tombol">
-        <p class="message">Not registered? <a href="signup.html">Create an account</a></p>
+<body>
+    <center>
+    <div class="wrapper">
+        <h2>Login</h2>
+        <p>Please fill in your credentials to login.</p></br>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                <label style="float: left;">Username</label>
+                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
+                <span class="help-block"><?php echo $username_err; ?></span>
+            </div>
+            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                <label style="float: left;">Password</label>
+                <input type="password" name="password" class="form-control">
+                <span class="help-block"><?php echo $password_err; ?></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Login">
+            </div>
+            <p style="float: left;">Don't have an account? <a href="register.php">Sign up now</a>.</p>
         </form>
-      </div>
     </div>
-  </section>
-
+    </center>
 </body>
 
-<script type="text/javascript">
-	function validasi() {
-		var name = document.getElementById("name").value;
-		var password = document.getElementById("password").value;
-		if (name != "" && password!="") {
-			return true;
-		}else{
-			alert('name dan Password harus di isi !');
-			return false;
-		}
-	}
-
-</script>
 </html>

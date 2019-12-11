@@ -4,6 +4,7 @@ require_once "conn.php";
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = "";
 $username_err = $password_err = $confirm_password_err = "";
+
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate username
@@ -24,14 +25,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (mysqli_stmt_num_rows($stmt) == 1) {
                     $username_err = "This username is already taken.";
                 } else {
-                    $username = trim($_POST["username"]);
+                    $username = trim($_POST["username"]);               
                 }
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
             }
+
+            // Close statement
+            mysqli_stmt_close($stmt);
         }
-        // Close statement
-        mysqli_stmt_close($stmt);
+        
     }
     // Validate password
     if (empty(trim($_POST["password"]))) {
@@ -39,8 +42,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif (strlen(trim($_POST["password"])) < 6) {
         $password_err = "Password must have atleast 6 characters.";
     } else {
+        
         $password = trim($_POST["password"]);
     }
+
     // Validate confirm password
     if (empty(trim($_POST["confirm_password"]))) {
         $confirm_password_err = "Please confirm password.";
@@ -50,6 +55,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $confirm_password_err = "Password did not match.";
         }
     }
+
+
     // Check input errors before inserting in database
     if (empty($username_err) && empty($password_err) && empty($confirm_password_err)) {
         // Prepare an insert statement
@@ -67,13 +74,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 echo "Something went wrong. Please try again later.";
             }
+
+            // Close statement
+            mysqli_stmt_close($stmt);
+
         }
-        // Close statement
-        mysqli_stmt_close($stmt);
     }
     // Close connection
     mysqli_close($link);
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -126,7 +137,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
              </br>
-    </br>
+             </br>
                 <label style="float: left;">Username</label>
                 <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
                 <span class="help-block"><?php echo $username_err; ?></span>

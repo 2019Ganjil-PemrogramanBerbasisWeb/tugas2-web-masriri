@@ -41,11 +41,14 @@ if (mysqli_num_rows($result) > 0) {
 <script>
 
     // copy array data
-    
+    var data = new Array();
 
 var data = [
-    [<?php echo json_encode($nama_tps)?>, 
-    <?php echo json_encode($berat_tps)?>]
+    [
+    <?php echo json_encode($nama_tps)?>, 
+    <?php echo json_encode($berat_tps)?>
+    
+    ]
 ];
     
 jexcel(document.getElementById('spreadsheet'), {

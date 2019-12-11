@@ -1,3 +1,15 @@
+<?php
+// Initialize the session
+session_start();
+
+// Check if the user is logged in, if not then redirect him to login page
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: index.html");
+	exit;
+}
+
+?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -10,12 +22,13 @@
 
 		<!-- Header -->
 			<header id="header" class="alt">
-				<h1><strong><a href="index.html">Dibuat</a></strong> oleh tim Masriri</h1>
+				<h1><strong><a href="index.php">Dibuat</a></strong> oleh tim Masriri</h1>
 				<nav id="nav">
 					<ul>
-						<li><a href="index.html">Beranda</a></li>
-						<li><a href="generic.html">Peta</a></li>
-						<li><a href="login.php">Masuk</a></li>
+						<li><a href="index.php">Beranda</a></li>
+						<li><a href="generic.php">Peta</a></li>
+						<li><a href="#"><?php echo htmlspecialchars($_SESSION["username"]); ?></a></li>
+						<li><a href="logout.php">Logout</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -27,7 +40,7 @@
 				<h2>Selamat Datang</h2>
 				<p>di website sistem monitoring online tempat  <br /> pembuangan sampah terpadu kota surabaya</p>
 				<ul class="actions">
-					<li><a href="generic.html" class="button special big">Lihat Map</a></li>
+					<li><a href="generic.php" class="button special big">Lihat Map</a></li>
 				</ul>
 			</section>
 

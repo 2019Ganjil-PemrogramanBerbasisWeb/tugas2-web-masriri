@@ -195,7 +195,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<center><button type="button" class="btn btn-link"><a href="jexcel.php">
 					Excel Spreadsheet
 				</a>
-		   </center>
+		   2</center>
 
 
 			</section>

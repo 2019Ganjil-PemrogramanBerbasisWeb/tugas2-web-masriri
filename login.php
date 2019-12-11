@@ -77,15 +77,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
             }
+        
         }
 
         // Close statement
         mysqli_stmt_close($stmt);
+
     }
 
     // Close connection
     mysqli_close($link);
 }
+
+
 ?>
 
 
@@ -102,9 +106,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         .wrapper {
-            width: 350px;
+            margin-top: 115px;
+            width: 380px;
+            height: 520px;
+            position: relative;
+            border: 1px;
+            border-radius: 10px;
+        }
+
+        .wrapper_custom {
+            width: 420px;
+            height: 520px;
+            background-color: rgba(0, 0, 0, 0.6);
+            position: relative;
+            border: 1px;
+            top: 60%;
+            left: 0%;
+            border-radius: 10px;
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+        
+            .black {
+                margin-bottom: 50px;
+            }
+       
+        header {
+            margin-bottom: 25px;
+            padding: 50px;
+        }
+
+        .color-white {
+            color: #fff;
+        }
+        
+        .landing {
+            background-image: url('images/user.jpg');
+            background-size: full;
+            background-repeat: no-repeat;
+        }
+
+        .navbar {
+            margin-bottom: 50px;
 
         }
+
+    
     </style>
 
 		<meta charset="utf-8" />
@@ -113,47 +160,62 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </head>
 
-<body>
+<body class="landing"> 
+    
+    
     <!-- Header -->
+    <div class="black">
 			<header id="header" class="alt">
+            
 				<h1><strong><a href="index.html">Dibuat</a></strong> oleh tim Masriri</h1>
-				<nav id="nav">
+				<nav class="navbar navbar-dark bg-dark">
 					<ul>
 						<li><a href="index.html">Beranda</a></li>
 						<li><a href="generic.html">Peta</a></li>
 						<li><a href="login.php">Masuk</a></li>
 					</ul>
-				</nav>
-			</header>
+                </nav>
+            </header>
+            </div>
 
-            <a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
             
 
+            <a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+    
+<header class="page-header header container-fluid>
+<div class="container_body">
     <center>
+    <div class="wrapper_custom">
     <div class="wrapper">
-        <h2>Login</h2>
+        <h2 class="color-white">Login</h2>
         <p>Please fill in your credentials to login.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <label style="float: left;">Username</label>
+                <label class="color-white" style="float: left;">Username</label>
                 <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
                 <span class="help-block"><?php echo $username_err; ?></span>
             </div>
             <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label style="float: left;">Password</label>
+                <label class="color-white"  style="float: left;">Password</label>
                 <input type="password" name="password" class="form-control">
                 <span class="help-block"><?php echo $password_err; ?></span>
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Login">
             </div>
-            <p style="float: left;">Don't have an account? <a href="register.php">Sign up now</a>.</p>
+            
+            <p style="float: center;">Don't have an account? <a class="color-white" href="register.php">Sign up now</a>.</p>
+    
         </form>
     </div>
+    </div>
+
     </center>
+</div>
 
     <!-- Footer -->
-			<footer id="footer">
+    <footer id="footer">
 				<div class="container">
 					<ul class="icons">
 						<li><a href="https://web.facebook.com/?_rdc=1&_rdr" class="icon fa-facebook"></a></li>
@@ -167,8 +229,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					</ul>
 				</div>
             </footer>
-            
+</header>
 
+            
+   
 </body>
 
 </html>
